@@ -19,7 +19,10 @@ def preprocess(file):
 spark = SparkSession.builder.appName("prediction").getOrCreate()
 spark.sparkContext.setLogLevel('WARN')
 
-file = sys.argv[1]
+file = "/mnt/mydata/"
+file += sys.argv[1]
+print(file)
+
 
 df = preprocess(file)
 

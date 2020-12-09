@@ -4,7 +4,7 @@ from pyspark.mllib.linalg import Vectors
 from pyspark.ml.feature import VectorAssembler
 from pyspark.ml.evaluation import RegressionEvaluator
 
-spark = SparkSession.builder.appName("abc").getOrCreate()
+spark = SparkSession.builder.appName("model").getOrCreate()
 def preprocess(file):
     pdf = pd.read_csv(file,skiprows=1, sep=";", header=None)
     names = ["fixed acidity","volatile acidity","citric acid", "residual sugar","chlorides","free sulfur dioxide","total sulfur dioxide","density","pH","sulphates","alcohol","quality"]
@@ -15,13 +15,12 @@ def preprocess(file):
                                 outputCol="features")
     return assembler.transform(rdd)
 
-df = src.preprocess("TrainingDataset.csv")
+df = preprocess("../TrainingDataset.csv")
 
 from pyspark.ml.classification import LogisticRegression
-lr = LogisticRegression(maxIter=30, regParam=0.3, elasticNetParam=0.3,
-                  featuresCol="features", labelCol="quality")
+lr = LogisticRegression(featuresCol="features", labelCol="quality")
 lrModel = lr.fit(df)
 predictionsDF = lrModel.transform(df)
 print(predictionsDF.limit(3).toPandas())
 
-lrModel.write().overwrite().save("test2")
+lrModel.write().overwrite().save("lrmodel")
