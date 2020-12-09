@@ -82,6 +82,10 @@ sudo docker run -v /full/local/path/to/validationdata.csv:/mnt/mydata/ -t ajb88/
 Do not change the container's mapped director, /mnt/mydata/. Also use the full local path to your validation dataset. 
 The output should be similar to running it through spark-submit. I tested this on a new EC2 instance that did not have spark installed. 
 
- 
- 
+### References/Acknowledgements:
+https://blog.insightdatascience.com/simply-install-spark-cluster-mode-341843a52b88
+https://towardsdatascience.com/how-to-containerize-models-trained-in-spark-f7ed9265f5c9
+https://piotrszul.github.io/spark-tutorial/notebooks/3.1_ML-Introduction.html
+https://stackoverflow.com/questions/44876778/how-can-i-use-a-local-file-on-container
+
 
