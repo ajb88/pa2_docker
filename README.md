@@ -1,12 +1,11 @@
 
 # Programming Assignment 2
-**Allen Blount**
-**CS643-Cloud Computing, Fall 2020**
-**Dr. Borcea**
+**Allen Blount**  
+**CS643-Cloud Computing, Fall 2020**  
+**Dr. Borcea**  
 
 ### Cloud Environment  
 I used a [cluster](https://imgur.com/sL8F99D) of 4 EC2 instances running Ubuntu Server 18.04:
-TODO:PIC
 
 Spark must be set up on each node. 
 #### Install Java and scala:
